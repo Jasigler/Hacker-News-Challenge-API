@@ -1,4 +1,5 @@
-[![Build Status](https://dev.azure.com/jasonsigler0724/HackerNews/_apis/build/status/Jasigler.Hacker-News-Challenge-Client?branchName=master)](https://dev.azure.com/jasonsigler0724/HackerNews/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/jasonsigler0724/HackerNews/_apis/build/status/Jasigler.Hacker-News-Challenge-API?branchName=master)](https://dev.azure.com/jasonsigler0724/HackerNews/_build/latest?definitionId=2&branchName=master)
+
 <p align="center">
 
   <h3 align="center">Hacker News Challenge API</h3>
