@@ -49,7 +49,7 @@ This was incredibly fun to make, and I learned quite a lot along the way (especi
 ```sh
 dotnet 
 ```
-
+&nbsp;
 
 ### Installation
 
@@ -89,16 +89,21 @@ Endpoints:
 
 
 
-
 ##### Get Story Ids for the latest stories
+
+![Latest_Swagger](https://github.com/Jasigler/Hacker-News-Challenge-API/blob/master/Images/Get_New_Swagger.PNG)
+
+
 ![GET Latest](https://github.com/Jasigler/Hacker-News-Challenge-API/blob/master/Images/Get_New.PNG)
 
 
-
 ##### Get Story By Id
+
+![Get Story By Swagger](https://github.com/Jasigler/Hacker-News-Challenge-API/blob/master/Images/Get_Story_Swagger.PNG)
+
+
+
 ![GETStory](https://github.com/Jasigler/Hacker-News-Challenge-API/blob/master/Images/Get_Story.PNG)
-
-
 
 
 ## Contact
