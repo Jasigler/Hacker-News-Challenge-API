@@ -1,4 +1,4 @@
-
+[![Build Status](https://dev.azure.com/jasonsigler0724/HackerNews/_apis/build/status/Jasigler.Hacker-News-Challenge-Client?branchName=master)](https://dev.azure.com/jasonsigler0724/HackerNews/_build/latest?definitionId=1&branchName=master)
 <p align="center">
 
   <h3 align="center">Hacker News Challenge API</h3>
@@ -7,9 +7,9 @@
      API for the Nextech Hacker News Challenge
     <br />
     <br />
-
   </p>
 </p>
+
 
 ## Table of Contents
 
