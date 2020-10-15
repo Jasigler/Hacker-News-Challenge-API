@@ -18,7 +18,13 @@ namespace nextech_news_api.Controllers
             _client = client;
             
         }
-        
+       
+        /// <summary>
+        ///  Get a list of latest story ids
+        /// </summary>
+        /// <returns>A new array of story Ids</returns>
+        /// <response code="200">Returns an array of ids</response>
+        /// <response code="404">Unable to retreive list</response>
         [HttpGet("new")]
         public async Task<ActionResult<int[]>> GetNewStories()
         {
@@ -32,7 +38,14 @@ namespace nextech_news_api.Controllers
 
             else return NotFound("No stories found.");
         }
-
+        
+        /// <summary>
+        /// Returns a story object from an ID
+        /// </summary>
+        /// <param name="storyId"></param>
+        /// <returns>The requested story object</returns>
+        /// <response code="200">Returns a story object</response>
+        /// <response code="400">Story not found</response>
         [HttpGet("{storyId}")]
         public async Task<ActionResult<Story>> GetStoryById([FromRoute] int storyId)
         {

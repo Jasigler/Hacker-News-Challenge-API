@@ -22,7 +22,8 @@ namespace nextech_news_api
         {
             services.AddMemoryCache();
             services.AddControllers();
-            services.AddHttpClient<IStoryClient, IStoryClient>("story", client =>
+            services.AddLogging();
+            services.AddHttpClient<IStoryClient, StoryClient>("story", client =>
             {
                 client.BaseAddress = new Uri("https://hacker-news.firebaseio.com/v0");
                 
@@ -38,6 +39,7 @@ namespace nextech_news_api
                         .AllowAnyMethod();
                     });
             });
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +57,13 @@ namespace nextech_news_api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "HackerNews API V1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
