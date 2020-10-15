@@ -20,7 +20,7 @@ namespace nextech_news_api.Controllers
         }
         
         [HttpGet("new")]
-        public async Task<ActionResult<int[]>> GetnewStories()
+        public async Task<ActionResult<int[]>> GetNewStories()
         {
             
             var topStoryList = await _client.GetNewStoryIds();

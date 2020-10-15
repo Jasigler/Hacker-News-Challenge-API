@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "9472a99c-0d08-444c-9edd-90d406b6b828",
+		"name": "HN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetNewStories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hackernews-api.azurewebsites.net/api/story/new",
+					"protocol": "https",
+					"host": [
+						"hackernews-api",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"story",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hackernews-api.azurewebsites.net/api/story/24750483",
+					"protocol": "https",
+					"host": [
+						"hackernews-api",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"story",
+						"24750483"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

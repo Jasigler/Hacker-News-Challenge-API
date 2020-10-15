@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using WebClients;
-using WebClients.Comments;
 using WebClients.Stories;
 
 namespace nextech_news_api
@@ -24,21 +22,17 @@ namespace nextech_news_api
         {
             services.AddMemoryCache();
             services.AddControllers();
-            services.AddHttpClient<IStoryClient, StoryClient>("story", client =>
+            services.AddHttpClient<IStoryClient, IStoryClient>("story", client =>
             {
                 client.BaseAddress = new Uri("https://hacker-news.firebaseio.com/v0");
                 
-            });
-            services.AddHttpClient<ICommentClient, CommentClient>("comment", client =>
-            {
-                client.BaseAddress = new Uri("https://hacker-news.firebaseio.com/v0");
             });
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("https://localhost")
+                        builder.WithOrigins("https://localhost", "https://hackernewsclient.azurewebsites.net")
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
