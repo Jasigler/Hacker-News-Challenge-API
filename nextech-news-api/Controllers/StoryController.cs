@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Models;
 using WebClients.Stories;
 
@@ -11,11 +9,11 @@ namespace nextech_news_api.Controllers
     [ApiController]
     public class StoryController : ControllerBase
     {
-        private readonly IStoryClient _client;
+        private readonly IStoryClient Client;
 
         public StoryController(IStoryClient client)
         {
-            _client = client;
+            Client = client;
             
         }
        
@@ -29,14 +27,16 @@ namespace nextech_news_api.Controllers
         public async Task<ActionResult<int[]>> GetNewStories()
         {
             
-            var topStoryList = await _client.GetNewStoryIds();
+            var topStoryList = await Client.GetNewStoryIds();
 
             if (topStoryList.Length > 0)
             {
                 return Ok(topStoryList);
             }
-
-            else return NotFound("No stories found.");
+            else
+            {
+                return NotFound("No stories found.");
+            }
         }
         
         /// <summary>
@@ -50,13 +50,16 @@ namespace nextech_news_api.Controllers
         public async Task<ActionResult<Story>> GetStoryById([FromRoute] int storyId)
         {
 
-            var requestedStory = await _client.GetStoryById(storyId);
+            var requestedStory = await Client.GetStoryById(storyId);
 
             if (requestedStory != null)
             {
                 return Ok(requestedStory);
             }
-            else return NotFound();
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
