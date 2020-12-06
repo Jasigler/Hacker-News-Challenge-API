@@ -6,7 +6,7 @@ using WebClients.Stories;
 using Xunit;
 namespace UnitTests.Controller
 {
-    public class StoryControllerTest
+    public class StoryControllerTest: TestBase
     {
 
         [Fact]
@@ -15,11 +15,10 @@ namespace UnitTests.Controller
             // Arrange
             int[] idArray = { 12345678, 87654321, 09876543 };
 
-            var mockStoryClient = new Mock<IStoryClient>();
-            mockStoryClient.Setup(client => client.GetNewStoryIds())
+            MockStoryClient.Setup(client => client.GetNewStoryIds())
                 .ReturnsAsync(idArray);
 
-            var storyController = new StoryController(mockStoryClient.Object);
+            var storyController = new StoryController(MockStoryClient.Object);
 
             // Act
             var result = storyController.GetNewStories().Result;
@@ -34,11 +33,10 @@ namespace UnitTests.Controller
             // Arrange
             int[] idArray = { };
             
-            var mockStoryClient = new Mock<IStoryClient>();
-            mockStoryClient.Setup(client => client.GetNewStoryIds())
+            MockStoryClient.Setup(client => client.GetNewStoryIds())
                 .ReturnsAsync(idArray);
 
-            var storyController = new StoryController(mockStoryClient.Object);
+            var storyController = new StoryController(MockStoryClient.Object);
 
             // Act
              var result = storyController.GetNewStories().Result;
@@ -64,11 +62,10 @@ namespace UnitTests.Controller
                 url = "https://www.google.com"
             };
 
-            var mockStoryClient = new Mock<IStoryClient>();
-            mockStoryClient.Setup(client => client.GetStoryById(It.IsAny<int>()))
+            MockStoryClient.Setup(client => client.GetStoryById(It.IsAny<int>()))
                 .ReturnsAsync(testStory);
 
-            var storyController = new StoryController(mockStoryClient.Object);
+            var storyController = new StoryController(MockStoryClient.Object);
 
             // Act
             var result = storyController.GetStoryById(testStory.id).Result;
@@ -81,11 +78,9 @@ namespace UnitTests.Controller
         public void GetStory_Returns_NotFoundResult_WhenNullObjectIsReceived()
         {
             // Arrange
-            var testStory = new Story { };
-            var mockStoryClient = new Mock<IStoryClient>();
-            mockStoryClient.Setup(client => client.GetStoryById(It.IsAny<int>()));
+            MockStoryClient.Setup(client => client.GetStoryById(It.IsAny<int>()));
 
-            var storyController = new StoryController(mockStoryClient.Object);
+            var storyController = new StoryController(MockStoryClient.Object);
 
             // Act
             var result = storyController.GetStoryById(1234).Result;

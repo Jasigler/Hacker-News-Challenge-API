@@ -8,36 +8,34 @@ using System.Threading.Tasks;
 
 namespace WebClients.Stories
 {
-    public class StoryClient : IStoryClient
+    public class StoryClient : IStoryClient, IDisposable
     {
-        private readonly HttpClient _client;
-        private readonly ILogger _logger;
-        private IMemoryCache _cache;
+        private readonly HttpClient Client;
+        private readonly ILogger Logger;
+        private IMemoryCache Cache;
 
         public StoryClient(HttpClient client, IMemoryCache cache, ILogger<IStoryClient> logger)
         {
-            _client = client;
-            _cache = cache;
-            _logger = logger;
+            Client = client;
+            Cache = cache;
+            Logger = logger;
         }
         public async Task<Story> GetStoryById(int storyId)
         {
-            var requestedStory = new Story();
-
-            if (!_cache.TryGetValue(storyId, out requestedStory))
+            Story requestedStory;
+            
+            if (!Cache.TryGetValue(storyId, out requestedStory))
             {
                 try
                 {
-                    requestedStory = await _client.GetFromJsonAsync<Story>($"{_client.BaseAddress}/item/{storyId}.json");
+                   requestedStory = await Client.GetFromJsonAsync<Story>($"{Client.BaseAddress}/item/{storyId}.json");
                 }
                 catch (Exception exception)
                 {
-                    _logger.LogError(exception.Message);
+                    Logger.LogError(exception.Message);
                 }
-                var cacheOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromSeconds(60));
                 
-                _cache.CreateEntry(requestedStory);
+               Cache.CreateEntry(requestedStory);
             }
 
             return requestedStory;
@@ -47,19 +45,31 @@ namespace WebClients.Stories
 
         public async Task<int[]> GetNewStoryIds()
         {
-            int[] newStories = { };
 
-            try
-            {
-                newStories = await _client.GetFromJsonAsync<int[]>($"{_client.BaseAddress}/newstories.json");
-            }
-
-            catch (Exception exception)
-            {
-                _logger.LogError(exception.Message);
-            }
-
-            return newStories;
+            return await Client.GetFromJsonAsync<int[]>($"{Client.BaseAddress}/newstories.json");
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+            Reset();
+        }
+
+        public void Reset()
+        {
+            Cache = new MemoryCache(new MemoryCacheOptions());
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+
+                Reset();
+            }
+        }
+
+        
     }
 }
