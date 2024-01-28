@@ -61,5 +61,12 @@ namespace nextech_news_api.Controllers
                 return NotFound();
             }
         }
+
+        [HttpPost("{name}")]
+        public  bool IsThisNameDaphne(string name)
+        {
+            return Client.AmIDaphne(name);
+
+        }
     }
 }

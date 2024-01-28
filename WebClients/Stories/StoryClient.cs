@@ -49,6 +49,19 @@ namespace WebClients.Stories
             return await Client.GetFromJsonAsync<int[]>($"{Client.BaseAddress}/newstories.json");
         }
 
+        // Explaining git and a little programming to my daughter
+        public bool AmIDaphne(string name)
+        {
+            bool amIDaphne = false;
+
+            if (name.ToLower() == "daphne")
+            {
+                amIDaphne = true;
+            }
+
+            return amIDaphne;
+        }
+
         public void Dispose()
         {
             Dispose(true);

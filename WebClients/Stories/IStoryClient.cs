@@ -8,5 +8,7 @@ namespace WebClients.Stories
     {
         public Task<int[]> GetNewStoryIds();
         public Task<Story> GetStoryById(int storyId);
+        public bool AmIDaphne(string name);
+        void AmIDaphne(bool v);
     }
 }
