@@ -25,14 +25,20 @@
 
 ## About The Project
 
-This is a .NET Core API for the Nextech Hacker News challenge. It simply retrieves the array of new story ids as well as individual stories from the Hacker News API. 
+This is a .NET Core API for the Nextech Hacker News challenge. It retrieves the array of 
+new story ids and grabs each story by Id. The challenge here is that the HN API does not return a JSON 
+object of stories, but rather an array of 'new' story Ids that must be retrieved individually. Therefore, an in-memory cache 
+is implemented to reduce API calls and mitigate socket exhaustion. 
+
+Because the scope of this project is limited to a small number of clients, an in-memory cache is sufficient. At scale, however, a  
+Redis (or even Mongo) database populated daily with the newest/most popular stories would be ideal. 
 
 <br/>
 
 
 ### Built With
 
-* [.NET 9]
+* .NET 9
 <br/>
 
 ## Getting Started
