@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>nextech_news_api</RootNamespace>
     <UserSecretsId>2d7d11cc-e372-4b2a-be05-16ff4a3f15f5</UserSecretsId>
   </PropertyGroup>

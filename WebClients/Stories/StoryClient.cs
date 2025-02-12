@@ -22,7 +22,7 @@ namespace WebClients.Stories
         }
         public async Task<Story> GetStoryById(int storyId)
         {
-            Story requestedStory;
+             Story requestedStory;
             
             if (!Cache.TryGetValue(storyId, out requestedStory))
             {
@@ -69,7 +69,5 @@ namespace WebClients.Stories
                 Reset();
             }
         }
-
-        
     }
 }

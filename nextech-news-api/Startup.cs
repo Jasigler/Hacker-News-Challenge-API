@@ -62,7 +62,7 @@ namespace nextech_news_api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "HackerNews API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "HackerNews API V2");
             });
 
             app.UseEndpoints(endpoints =>

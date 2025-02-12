@@ -1,11 +1,11 @@
-[![Build Status](https://dev.azure.com/jasonsigler0724/HackerNews/_apis/build/status/Jasigler.Hacker-News-Challenge-API?branchName=master)](https://dev.azure.com/jasonsigler0724/HackerNews/_build/latest?definitionId=2&branchName=master)
+
 
 <p align="center">
 
-  <h3 align="center">Hacker News Challenge API</h3>
+  <h3 align="center">Hacker News Challenge API (Updated)</h3>
 
   <p align="center">
-     API for the Nextech Hacker News Challenge
+     API for the Hacker News Challenge
     <br />
     <br />
   </p>
@@ -32,12 +32,12 @@ This is a .NET Core API for the Nextech Hacker News challenge. It simply retriev
 
 ### Built With
 
-* [.NET Core 3.1](https://angular.io/)
+* [.NET 9]
 <br/>
 
 ## Getting Started
 
-1. Download the .NET Core 3.1 SDK[here.](https://nodejs.org/en);
+1. Download the .NET 9 SDK[ here ](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 
 2. Veryify that you have the DotNet CLI by running:
 ```sh
@@ -63,7 +63,7 @@ dotnet build
 
 ### Running Tests
 
-A seperate Xunit project exists within the solution.
+A separate Xunit project exists within the solution.
 
 To run tests: 
 ```sh
@@ -76,8 +76,8 @@ dotnet test
 A Postman collection is included in the 'Postman' folder of this repo.
 
 Ports:
-  1. Debug: 5104(HTTPS), 51073(HTTP)
-  2. IIS Express: 1770(HTTPS), 1790(HTTP)
+  1. Debug: 5104 (HTTPS), 51073 (HTTP)
+  2. IIS Express: 1770 (HTTPS), 1790 (HTTP)
 <br/>
 Endpoints:
   1. GET: route/api/story/{id}
